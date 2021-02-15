@@ -207,7 +207,7 @@ class WebServer {
           try {
             Integer num1 = Integer.parseInt(query_pairs.get("num1"));
             Integer num2 = Integer.parseInt(query_pairs.get("num2"));  
-            result = num1 * num2;
+            result = (String) (num1 * num2);
           } catch (NumberFormatException nfe) {
             valid_params = false;
             result = "Invalid parameters";
