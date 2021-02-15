@@ -200,13 +200,18 @@ class WebServer {
           Map<String, String> query_pairs = new LinkedHashMap<String, String>();
           // extract path parameters
           query_pairs = splitQuery(request.replace("multiply?", ""));
-
+          
+          boolean valid_params = true;
           // extract required fields from parameters
-          Integer num1 = Integer.parseInt(query_pairs.get("num1"));
-          Integer num2 = Integer.parseInt(query_pairs.get("num2"));
-
+          try {
+            Integer num1 = Integer.parseInt(query_pairs.get("num1"));
+            Integer num2 = Integer.parseInt(query_pairs.get("num2"));  
+          } catch (NumberFormatException nfe) {
+            valid_params = false;
+          }
+          
           // do math
-          Integer result = num1 * num2;
+          String result = valid_params ? num1 * num2 : "Invalid parameters";
 
           // Generate response
           builder.append("HTTP/1.1 200 OK\n");
