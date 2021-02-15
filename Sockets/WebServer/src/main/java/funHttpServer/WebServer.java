@@ -202,17 +202,17 @@ class WebServer {
           query_pairs = splitQuery(request.replace("multiply?", ""));
           
           boolean valid_params = true;
+          String result = "";
           // extract required fields from parameters
           try {
             Integer num1 = Integer.parseInt(query_pairs.get("num1"));
             Integer num2 = Integer.parseInt(query_pairs.get("num2"));  
+            result = num1 * num2;
           } catch (NumberFormatException nfe) {
             valid_params = false;
+            result = "Invalid parameters";
           }
           
-          // do math
-          String result = valid_params ? (String) (num1 * num2) : "Invalid parameters";
-
           // Generate response
           builder.append("HTTP/1.1 200 OK\n");
           builder.append("Content-Type: text/html; charset=utf-8\n");
