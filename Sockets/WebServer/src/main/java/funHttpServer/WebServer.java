@@ -211,7 +211,7 @@ class WebServer {
           }
           
           // do math
-          String result = valid_params ? (String) num1 * num2 : "Invalid parameters";
+          String result = valid_params ? (String) (num1 * num2) : "Invalid parameters";
 
           // Generate response
           builder.append("HTTP/1.1 200 OK\n");
