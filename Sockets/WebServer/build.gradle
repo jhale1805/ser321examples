@@ -24,4 +24,13 @@ task FunWebServer(type: JavaExec) {
   standardInput = System.in
 }
 
+// Example how you can add that libraries can be pulled from mavenCentral()
+repositories {
+  mavenCentral()
+}
+
+// Setting dependencies, e.g. when you import JSON in your Java files
+dependencies{
+  compile 'org.json:json:20171018'
+}
 
